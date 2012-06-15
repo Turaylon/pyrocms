@@ -201,7 +201,7 @@ class Admin extends Admin_Controller
 		// Loop through each validation rule
 		foreach ($this->_validation_rules as $rule)
 		{
-			if ($this->input->post($rule['field']) !== FALSE)
+			if ($this->input->post($rule['field']) !== NULL)
 			{
 				$variable->{$rule['field']} = set_value($rule['field']);
 			}

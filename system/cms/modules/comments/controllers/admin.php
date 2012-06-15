@@ -165,7 +165,7 @@ class Admin extends Admin_Controller {
 		// Loop through each rule
 		foreach ($this->validation_rules as $rule)
 		{
-			if ($this->input->post($rule['field']) !== FALSE)
+			if ($this->input->post($rule['field']) !== NULL)
 			{
 				$comment->{$rule['field']} = $this->input->post($rule['field']);
 			}

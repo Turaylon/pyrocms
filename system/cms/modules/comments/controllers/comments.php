@@ -151,7 +151,7 @@ class Comments extends Public_Controller
 			// Loop through each rule
 			foreach ($this->validation_rules as $rule)
 			{
-				if ($this->input->post($rule['field']) !== FALSE)
+				if ($this->input->post($rule['field']) !== NULL)
 				{
 					$comment[$rule['field']] = escape_tags($this->input->post($rule['field']));
 				}

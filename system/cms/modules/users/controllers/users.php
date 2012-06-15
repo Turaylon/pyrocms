@@ -101,9 +101,6 @@ class Users extends Public_Controller
 			// Kill the session
 			$this->session->unset_userdata('redirect_to');
 
-			// Deprecated.
-			$this->hooks->_call_hook('post_user_login');
-
 			// trigger a post login event for third party devs
 			Events::trigger('post_user_login');
 
@@ -439,15 +436,12 @@ class Users extends Public_Controller
 		$code = ($this->input->post('activation_code')) ? $this->input->post('activation_code') : $code;
 
 		// If user has supplied both bits of information
-		if ($id AND $code)
+		if ($id and $code)
 		{
 			// Try to activate this user
 			if ($this->ion_auth->activate($id, $code))
 			{
 				$this->session->set_flashdata('activated_email', $this->ion_auth->messages());
-
-				// Deprecated
-				$this->hooks->_call_hook('post_user_activation');
 
 				// trigger an event for third party devs
 				Events::trigger('post_user_activation', $id);

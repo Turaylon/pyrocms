@@ -336,7 +336,7 @@ class Settings {
 		{
 			list($value, $name) = explode('=', $option);
 
-			if ($this->ci->lang->line('settings_form_option_' . $name) !== FALSE)
+			if ( ! $this->ci->lang->line('settings_form_option_' . $name))
 			{
 				$name = $this->ci->lang->line('settings_form_option_' . $name);
 			}
